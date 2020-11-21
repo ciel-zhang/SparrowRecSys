@@ -2,7 +2,7 @@ package com.wzhe.sparrowrecsys.online.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wzhe.sparrowrecsys.online.datamanager.Movie;
-import com.wzhe.sparrowrecsys.online.recflow.SimilarMovieFlow;
+import com.wzhe.sparrowrecsys.online.recprocess.SimilarMovieProcess;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,7 +29,7 @@ public class SimilarMovieService extends HttpServlet {
             String model = request.getParameter("model");
 
             //use SimilarMovieFlow to get similar movies
-            List<Movie> movies = SimilarMovieFlow.getRecList(Integer.parseInt(movieId), Integer.parseInt(size), model);
+            List<Movie> movies = SimilarMovieProcess.getRecList(Integer.parseInt(movieId), Integer.parseInt(size), model);
 
             //convert movie list to json format and return
             ObjectMapper mapper = new ObjectMapper();
